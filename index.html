@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volcanoes - Earth's Fiery Giants</title>
+    
+    <!-- Google Analytics - Replace GA_MEASUREMENT_ID with your actual ID -->
+    <script async src="[googletagmanager.com](https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID)"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a0a0a 0%, #2d1810 50%, #0d0d0d 100%);
+            color: #f5f5f5;
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+
+        /* Animated lava particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ff6b35;
+            border-radius: 50%;
+            animation: rise 8s infinite;
+            opacity: 0;
+            box-shadow: 0 0 10px #ff6b35, 0 0 20px #ff4500;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 1s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 2s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 3s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 4s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 6s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 7s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 0.5s; }
+        .particle:nth-child(10) { left: 15%; animation-delay: 2.5s; }
+
+        @keyframes rise {
+            0% {
+                bottom: -10px;
+                opacity: 0;
+                transform: translateX(0);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                bottom: 100vh;
+                opacity: 0;
+                transform: translateX(30px);
+            }
+        }
+
+        header {
+            background: linear-gradient(180deg, rgba(255, 107, 53, 0.3) 0%, transparent 100%);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff6b35;
+            text-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #f5f5f5;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s, text-shadow 0.3s;
+            padding: 5px 10px;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+            text-shadow: 0 0 15px rgba(255, 107, 53, 0.7);
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 120px 20px 60px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ff6b35, #ff4500, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.5));
+            }
+            to {
+                filter: drop-shadow(0 0 40px rgba(255, 69, 0, 0.8));
+            }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #cccccc;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        section {
+            margin: 60px 0;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.15);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: #ff6b35;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h2::before {
+            content: '🌋';
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #d0d0d0;
+        }
+
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .fact-card {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 69, 0, 0.05) 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            transition: all 0.3s;
+        }
+
+        .fact-card:hover {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, rgba(255, 69, 0, 0.1) 100%);
+            transform: scale(1.02);
+        }
+
+        .fact-card h3 {
+            color: #ffd700;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .volcano-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .type-card {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            transition: all 0.3s;
+        }
+
+        .type-card:hover {
+            border-color: #ff6b35;
+            box-shadow: 0 0 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .type-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .type-card h3 {
+            color: #ff6b35;
+            margin-bottom: 10px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin-top: 25px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #ff6b35, #ff4500, #ffd700);
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 25px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: #ff6b35;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 107, 53, 0.7);
+        }
+
+        .timeline-item h3 {
+            color: #ffd700;
+            margin-bottom: 8px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 35px;
+            background: linear-gradient(135deg, #ff6b35, #ff4500);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            margin-top: 60px;
+            border-top: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        footer p {
+            color: #888;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            section {
+                padding: 25px;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">🌋 Volcanoes</div>
+            <ul class="nav-links">
+                <li><a href="#facts">Facts</a></li>
+                <li><a href="#types">Types</a></li>
+                <li><a href="#eruptions">Eruptions</a></li>
+                <li><a href="#famous">Famous</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="hero">
+            <h1>Volcanoes</h1>
+            <p>Discover the raw power of Earth's most spectacular geological features — where fire meets rock and shapes our planet.</p>
+        </div>
+
+        <section id="facts">
+            <h2>Volcanic Facts</h2>
+            <p>Volcanoes are openings in Earth's crust where molten rock, gases, and ash escape from deep within the planet. They have shaped our world for billions of years.</p>
+            
+            <div class="facts-grid">
+                <div class="fact-card">
+                    <h3>🔥 1,500+ Active</h3>
+                    <p>There are approximately 1,500 potentially active volcanoes worldwide, with around 50-70 erupting each year.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>🌡️ Extreme Heat</h3>
+                    <p>Lava temperatures range from 700°C to 1,200°C — hot enough to melt most metals instantly.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>🌊 Ocean Floor</h3>
+                    <p>About 80% of volcanic eruptions occur beneath the ocean, along mid-ocean ridges.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>🏔️ Tallest Peak</h3>
+                    <p>Mauna Kea in Hawaii is the world's tallest volcano at 10,203m from its oceanic base to summit.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="types">
+            <h2>Types of Volcanoes</h2>
+            <p>Volcanoes come in different shapes and sizes, each with unique characteristics and eruption styles.</p>
+            
+            <div class="volcano-types">
+                <div class="type-card">
+                    <div class="type-icon">🗻</div>
+                    <h3>Stratovolcano</h3>
+                    <p>Steep, cone-shaped peaks built from alternating lava and ash layers. Examples: Mount Fuji, Mount St. Helens.</p>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">🛡️</div>
+                    <h3>Shield Volcano</h3>
+                    <p>Broad, gently sloping domes formed by fluid lava flows. Examples: Mauna Loa, Kilauea.</p>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">⛰️</div>
+                    <h3>Cinder Cone</h3>
+                    <p>Small, steep-sided cones built from volcanic debris. The simplest volcano type.</p>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">🕳️</div>
+                    <h3>Caldera</h3>
+                    <p>Large depressions formed when a volcano collapses after a massive eruption. Example: Yellowstone.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="eruptions">
+            <h2>How Eruptions Happen</h2>
+            <p>Volcanic eruptions occur when pressure from molten rock and gases builds up beneath Earth's surface until it finds a way to escape.</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>1. Magma Formation</h3>
+                    <p>Deep beneath the surface (50-200km), extreme heat melts rock into magma. This molten material is less dense than surrounding rock.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>2. Rising Pressure</h3>
+                    <p>Magma rises through cracks in the crust, collecting in chambers. Dissolved gases expand as pressure decreases.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>3. Pre-Eruption Signs</h3>
+                    <p>Earthquakes, ground swelling, gas emissions, and temperature changes signal an impending eruption.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>4. Eruption</h3>
+                    <p>When pressure exceeds the strength of overlying rock, magma bursts through as lava, ash, and volcanic gases.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>5. Aftermath</h3>
+                    <p>Lava cools and solidifies, adding new rock. Ash settles over vast areas, eventually enriching soil with minerals.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="famous">
+            <h2>Famous Volcanoes</h2>
+            <p>Throughout history, certain volcanoes have captured human imagination through their beauty, power, or devastating eruptions.</p>
+            
+            <div class="facts-grid">
+                <div class="fact-card">
+                    <h3>🗾 Mount Fuji, Japan</h3>
+                    <p>Japan's iconic stratovolcano and highest peak at 3,776m. Sacred in Japanese culture, last erupted in 1707.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>🇮🇹 Mount Vesuvius, Italy</h3>
+                    <p>Famous for destroying Pompeii in 79 AD. One of the world's most dangerous volcanoes with 3 million people nearby.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>🇺🇸 Yellowstone, USA</h3>
+                    <p>A supervolcano with a caldera 72km long. Its last super-eruption 640,000 years ago covered half of North America in ash.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>🇮🇸 Eyjafjallajökull, Iceland</h3>
+                    <p>Its 2010 eruption disrupted air travel across Europe for weeks, stranding millions of passengers worldwide.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#facts" class="cta-button">Explore More Facts</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Volcanoes — Earth's Fiery Giants | Built for Learning</p>
+        <p style="margin-top: 10px; font-size: 0.9rem;">An educational resource about volcanic science</p>
+    </footer>
+
+    <!-- Optional: Event tracking for Google Analytics -->
+    <script>
+        // Track navigation clicks
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                gtag('event', 'navigation_click', {
+                    'link_text': this.textContent,
+                    'link_url': this.href
+                });
+            });
+        });
+
+        // Track CTA button clicks
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function() {
+                gtag('event', 'cta_click', {
+                    'button_text': this.textContent
+                });
+            });
+        });
+
+        // Track section views using Intersection Observer
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    gtag('event', 'section_view', {
+                        'section_id': entry.target.id
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
